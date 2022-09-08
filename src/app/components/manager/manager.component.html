@@ -1,0 +1,510 @@
+
+
+<body>
+  <app-navbar></app-navbar>
+<br />
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <!--search-->
+  
+  <div class="input-group input-group-sm mb-3">
+    <div class="input-group-prepend">
+      <span class="serch input-group-text" id="inputGroup-sizing-sm"><i class="fa-solid fa-magnifying-glass"></i></span>
+    </div>
+    <input type="text" class=" form-control" aria-label="Small" id="search" placeholder="buscar un registro...">
+  </div>
+  <!--search-->
+    <li class="nav-item" role="presentation">
+    <button class="nav-link active btns" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true" >En proceso</button>
+    </li>
+    <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Rechazadas</button>
+    </li>
+    <li class="nav-item" role="presentation">
+    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Terminadas</button>
+    </li>
+    </ul>
+    <div class="tab-content" id="myTabContent" style="width:auto;height: auto; ">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <br>
+      <!--inicia-->
+  <div class="container">
+    
+    <div class="table-responsive">
+      <table class="table table-condensed table-bordered table-hover" id="tblDatos" align="center" border="1" style="width:auto; height:20px;" >
+        <thead>
+          <tr  align="center" class="active">
+                    
+            <th class="id"       >ID</th>
+            <th class="cabezaras" >Solicitante</th>
+            <th class="cabezaras">Correo solicitante</th>
+            <th class="cabezaras">Fecha solicitud</th>
+            <th class="cabezaras">Tipo ticket</th>
+            <th class="cabezaras">Proveedor</th>
+            <th class="cabezaras">Motivo</th>
+            <th class="cabezaras">Área</th>
+            <th class="cabezaras">Descripción</th>
+            <th class="cabezaras">Observaciones</th>
+            <th class="cabezaras">¿Regresa?</th>
+            <th class="cabezaras">Autorizador</th>
+            <th class="cabezaras">Status aprovación</th>
+            <th class="cabezaras">Comentarios autorizador</th>
+            <th class="cabezaras">Fecha salida</th>
+            <th class="cabezaras">Nombre proveedor</th>
+            <th class="cabezaras">Validar salida</th>
+            <th class="cabezaras">Fecha compromiso</th>
+            <th class="cabezaras">Comentarios compras</th>
+            <th class="cabezaras">Historial compras</th>
+            <th class="cabezaras" >Fecha regreso</th>
+            <th class="cabezaras">Comentarios regreso</th>
+            <th class="cabezaras">Status2</th>
+            <th class="cabezaras">Email-sent</th>
+            <th class="cabezaras" > <i class="fa-solid fa-file-pen"></i> </th>
+            <th  class="cabezaras"> <i class="fa-solid fa-trash"></i> </th>
+            <th class="cabezaras"> <i class="fa-solid fa-circle-check"></i> </th>  
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of datatableProceso" style="width: 100%;" align="center" >
+            <td class="id">{{ item.id_solicitud }}</td>       
+            <td>{{item.solicitante}}</td>
+            <td>{{item.correoSolicitante}}</td>
+            <td>{{item.fechaSolicitud}}</td>
+            <td>{{item.tipoTicket}}</td>
+            <td>{{item.provedor}}</td>
+            <td>{{item.motivo}}</td>
+            <td>{{item.area}}</td>
+            <td>{{item.descripcion}}</td>
+            <td>{{item.observaciones}}</td>
+            <td>{{item.regresa}}</td>
+            <td>{{item.autorizador}}</td>
+            <td>{{item.statusAprobacion}}</td>
+            <td>{{item.comentariosAutorizador}}</td>
+            <td>{{item.fechaSalida}}</td>
+            <td>{{item.nombreProvedor}}</td>
+            <td>{{item.validarSalida}}</td>
+            <td>{{item.fechaCompromiso}}</td>
+            <td>{{item.comentariosCompras}}</td>
+            <td>{{item.historialCompras}}</td>
+            <td>{{item.fechaRegreso}}</td>
+            <td>{{item.comentariosRegreso}}</td>
+            <td>{{item.status2}}</td>
+            <td>{{item.emailSent}}</td>
+            <td>
+              <a type="button" class="nav-link active" style="color: blue;" (click)="onSetData(item); openFormModal()" ><i class="fa-solid fa-square-pen"></i></a></td>
+              <td><a type="button" class="nav-link active" style="color: red;"  (click)="onDeleteMascota(item.id_solicitud)"><i class="fa-solid fa-trash-can"></i></a></td>
+            
+            <td><a type="button" class="nav-link active"  routerLink="autorizar/{{item.id_solicitud}}" style="color:green ;" ><i class="fa-solid fa-square-check"></i></a></td>
+          </tr> 
+         
+        </tbody>
+      </table>
+    </div>
+  </div>    <!--inicia-->
+  
+  
+  <!--tabla nueva-->
+  
+  
+   
+      
+      </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  
+      <br>
+      <!--inicia-->
+  <div class="container">
+    
+    <div class="table-responsive">
+      <table class="table table-condensed table-bordered table-hover" id="tblDatos" align="center" border="1" style="width:auto; height:20px;" >
+        <thead>
+          <tr  align="center" class="active">
+                    
+            <th class="id"       >ID</th>
+            <th class="cabezaras" >Solicitante</th>
+            <th class="cabezaras">Correo solicitante</th>
+            <th class="cabezaras">Fecha solicitud</th>
+            <th class="cabezaras">Tipo ticket</th>
+            <th class="cabezaras">Proveedor</th>
+            <th class="cabezaras">Motivo</th>
+            <th class="cabezaras">Área</th>
+            <th class="cabezaras">Descripción</th>
+            <th class="cabezaras">Observaciones</th>
+            <th class="cabezaras">¿Regresa?</th>
+            <th class="cabezaras">Autorizador</th>
+            <th class="cabezaras">Status aprovación</th>
+            <th class="cabezaras">Comentarios autorizador</th>
+            <th class="cabezaras">Fecha salida</th>
+            <th class="cabezaras">Nombre proveedor</th>
+            <th class="cabezaras">Validar salida</th>
+            <th class="cabezaras">Fecha compromiso</th>
+            <th class="cabezaras">Comentarios compras</th>
+            <th class="cabezaras">Historial compras</th>
+            <th class="cabezaras" >Fecha regreso</th>
+            <th class="cabezaras">Comentarios regreso</th>
+            <th class="cabezaras">Status2</th>
+            <th class="cabezaras">Email-sent</th>
+            <th class="cabezaras" > <i class="fa-solid fa-file-pen"></i> </th>
+            <th  class="cabezaras"> <i class="fa-solid fa-trash"></i> </th>
+            <th class="cabezaras"> <i class="fa-solid fa-circle-check"></i> </th>  
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of datatablerechazadas" style="width: 100%;" align="center" >
+            <td class="id">{{ item.id_solicitud }}</td>       
+            <td>{{item.solicitante}}</td>
+            <td>{{item.correoSolicitante}}</td>
+            <td>{{item.fechaSolicitud}}</td>
+            <td>{{item.tipoTicket}}</td>
+            <td>{{item.provedor}}</td>
+            <td>{{item.motivo}}</td>
+            <td>{{item.area}}</td>
+            <td>{{item.descripcion}}</td>
+            <td>{{item.observaciones}}</td>
+            <td>{{item.regresa}}</td>
+            <td>{{item.autorizador}}</td>
+            <td>{{item.statusAprobacion}}</td>
+            <td>{{item.comentariosAutorizador}}</td>
+            <td>{{item.fechaSalida}}</td>
+            <td>{{item.nombreProvedor}}</td>
+            <td>{{item.validarSalida}}</td>
+            <td>{{item.fechaCompromiso}}</td>
+            <td>{{item.comentariosCompras}}</td>
+            <td>{{item.historialCompras}}</td>
+            <td>{{item.fechaRegreso}}</td>
+            <td>{{item.comentariosRegreso}}</td>
+            <td>{{item.status2}}</td>
+            <td>{{item.emailSent}}</td>
+            <td>
+              <a type="button" class="nav-link active" style="color: blue;" (click)="onSetData(item); openFormModal()" ><i class="fa-solid fa-square-pen"></i></a></td>
+              <td><a type="button" class="nav-link active" style="color: red;"  (click)="onDeleteMascota(item.id_solicitud)"><i class="fa-solid fa-trash-can"></i></a></td>
+            
+            <td><a type="button" class="nav-link active"  routerLink="autorizar/{{item.id_solicitud}}" style="color:green ;" ><i class="fa-solid fa-square-check"></i></a></td>
+          </tr> 
+         
+        </tbody>
+      </table>
+    </div>
+    
+  </div>    <!--inicia-->
+  
+  
+  <!--tabla nueva-->
+  
+    </div>
+  
+  
+  
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+  
+  
+      <br>
+      <!--inicia-->
+  <div class="container">
+   
+    <div class="table-responsive">
+      <table class="table table-condensed table-bordered table-hover" id="tblDatos" align="center" border="1" style="width:auto; height:20px;" >
+        <thead>
+          <tr  align="center" class="active">
+                    
+            <th class="id"       >ID</th>
+            <th class="cabezaras" >Solicitante</th>
+            <th class="cabezaras">Correo solicitante</th>
+            <th class="cabezaras">Fecha solicitud</th>
+            <th class="cabezaras">Tipo ticket</th>
+            <th class="cabezaras">Proveedor</th>
+            <th class="cabezaras">Motivo</th>
+            <th class="cabezaras">Área</th>
+            <th class="cabezaras">Descripción</th>
+            <th class="cabezaras">Observaciones</th>
+            <th class="cabezaras">¿Regresa?</th>
+            <th class="cabezaras">Autorizador</th>
+            <th class="cabezaras">Status aprovación</th>
+            <th class="cabezaras">Comentarios autorizador</th>
+            <th class="cabezaras">Fecha salida</th>
+            <th class="cabezaras">Nombre proveedor</th>
+            <th class="cabezaras">Validar salida</th>
+            <th class="cabezaras">Fecha compromiso</th>
+            <th class="cabezaras">Comentarios compras</th>
+            <th class="cabezaras">Historial compras</th>
+            <th class="cabezaras" >Fecha regreso</th>
+            <th class="cabezaras">Comentarios regreso</th>
+            <th class="cabezaras">Status2</th>
+            <th class="cabezaras">Email-sent</th>
+            <th class="cabezaras" > <i class="fa-solid fa-file-pen"></i> </th>
+            <th  class="cabezaras"> <i class="fa-solid fa-trash"></i> </th>
+            <th class="cabezaras"> <i class="fa-solid fa-circle-check"></i> </th>  
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of datatableterminadas" style="width: 100%;" align="center" >
+            <td class="id">{{ item.id_solicitud }}</td>       
+            <td>{{item.solicitante}}</td>
+            <td>{{item.correoSolicitante}}</td>
+            <td>{{item.fechaSolicitud}}</td>
+            <td>{{item.tipoTicket}}</td>
+            <td>{{item.provedor}}</td>
+            <td>{{item.motivo}}</td>
+            <td>{{item.area}}</td>
+            <td>{{item.descripcion}}</td>
+            <td>{{item.observaciones}}</td>
+            <td>{{item.regresa}}</td>
+            <td>{{item.autorizador}}</td>
+            <td>{{item.statusAprobacion}}</td>
+            <td>{{item.comentariosAutorizador}}</td>
+            <td>{{item.fechaSalida}}</td>
+            <td>{{item.nombreProvedor}}</td>
+            <td>{{item.validarSalida}}</td>
+            <td>{{item.fechaCompromiso}}</td>
+            <td>{{item.comentariosCompras}}</td>
+            <td>{{item.historialCompras}}</td>
+            <td>{{item.fechaRegreso}}</td>
+            <td>{{item.comentariosRegreso}}</td>
+            <td>{{item.status2}}</td>
+            <td>{{item.emailSent}}</td>
+            <td>
+              <a type="button" class="nav-link active" style="color: blue;" (click)="onSetData(item); openFormModal()" ><i class="fa-solid fa-square-pen"></i></a></td>
+              <td><a type="button" class="nav-link active" style="color: red;"  (click)="onDeleteMascota(item.id_solicitud)"><i class="fa-solid fa-trash-can"></i></a></td>
+            
+            <td><a type="button" class="nav-link active"  routerLink="autorizar/{{item.id_solicitud}}" style="color:green ;" ><i class="fa-solid fa-square-check"></i></a></td>
+          </tr> 
+         
+        </tbody>
+        
+      </table>
+      
+    </div>
+    
+  </div>    <!--inicia-->
+  
+  
+  <!--tabla nueva-->
+  
+  
+  
+  
+    </div>
+    </div>
+  
+  
+  
+  
+</body>
+
+
+   <!--form modal-->
+   <div
+   class="modal fade"
+   id="myModal"
+   tabindex="-1"
+   aria-labelledby="exampleModalLabel"
+   aria-hidden="true"
+   >
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">Agregar comentarios</h5>
+   
+         <button
+           type="button"
+           class="btn-close"
+           data-bs-dismiss="modal"
+           aria-label="Close"
+         ></button>
+   
+       </div>
+       
+       <div class="row mt-5">
+   
+         
+   
+         <div class="input-group">
+           <span class="input-group-text" id="basic-addon1">Núm. Solicitud</span>
+           <input type="text" class="form-control" placeholder="Id solicitud" aria-label="Username" aria-describedby="basic-addon1" name="id" id="txtid"  [(ngModel)]="solicitud.id_solicitud" disabled="disabled" >
+         </div>
+     
+         
+   
+   
+         <div class=" input-group-lg">
+           <br>
+           
+           <span>Solicitante: </span>
+           <input type="text" class="form-control" placeholder="Solicitante" aria-label="Username" aria-describedby="basic-addon1" name="id" id="txtFS"  [(ngModel)]="solicitud.solicitante">
+         </div>
+   
+         <div class=" input-group-lg">
+          <br>
+          
+          <span>Correo solicitante: </span>
+          <input type="text" class="form-control" placeholder="Correo solicitante" aria-label="Username" aria-describedby="basic-addon1" name="id" id="txtFS"  [(ngModel)]="solicitud.correoSolicitante">
+        </div>
+  
+        <div class=" input-group-lg">
+          <br>
+          
+          <span>Fecha solicitud: </span>
+          <input type="date" class="form-control" placeholder="Fecha solicitud" aria-label="Username" aria-describedby="basic-addon1" name="id" id="txtFS"  [(ngModel)]="solicitud.fechaSolicitud">
+        </div>
+
+        <div class=" input-group-lg">
+          <br>
+          
+          <span>Tipo ticket: </span>
+          <input type="text" class="form-control" placeholder="Tipo ticket" aria-label="Username" aria-describedby="basic-addon1" name="id" id="txtFS"  [(ngModel)]="solicitud.tipoTicket">
+        </div>
+
+        <div class=" input-group-lg">
+          <br>
+          
+          <span>Proveedor: </span>
+          <input type="text" class="form-control" placeholder="Proveedor(Empresa)" aria-label="Username" aria-describedby="basic-addon1" name="id" id="txtFS"  [(ngModel)]="solicitud.provedor">
+        </div>
+
+        <div class=" input-group-lg">
+          <br>
+          
+          <span>Motivo: </span>
+          <input type="text" class="form-control" placeholder="Motivo" aria-label="Username" aria-describedby="basic-addon1" name="id" id="txtFS"  [(ngModel)]="solicitud.motivo">
+        </div>
+
+        <div class=" input-group-lg">
+          <br>
+          
+          <span>Área: </span>
+          <input type="text" class="form-control" placeholder="Área" aria-label="Username" aria-describedby="basic-addon1" name="id" id="txtFS"  [(ngModel)]="solicitud.area">
+        </div>
+         
+        <div class=" input-group-lg">
+          <br>
+          
+          <span>Descripción: </span>
+          <textarea type="text" class="form-control" placeholder="Descripción" aria-label="Username" aria-describedby="basic-addon1" name="id" id="txtFS"  [(ngModel)]="solicitud.descripcion"></textarea>
+        </div>
+
+        <div class=" input-group-lg">
+          <br>
+          
+          <span>Observaciones: </span>
+          <textarea type="text" class="form-control" placeholder="Observaciones" aria-label="Username" aria-describedby="basic-addon1" name="id" id="txtFS"  [(ngModel)]="solicitud.observaciones"></textarea>
+        </div>
+
+        <div class=" input-group-lg">
+          <br>
+          
+          <span>¿Regresa?: </span>
+          <input type="text" class="form-control" placeholder="Regresa" aria-label="Username" aria-describedby="basic-addon1" name="id" id="txtFS"  [(ngModel)]="solicitud.regresa">
+        </div>
+
+        <div class=" input-group-lg">
+          <br>
+          
+          <span>Autorizador: </span>
+          <input type="text" class="form-control" placeholder="Autorizador" aria-label="Username" aria-describedby="basic-addon1" name="id" id="txtFS"  [(ngModel)]="solicitud.autorizador">
+        </div>
+
+        <div class=" input-group-lg">
+          <br>
+          
+          <span>Status Aprovación: </span>
+          <input type="text" class="form-control" placeholder="Status Aprovación" aria-label="Username" aria-describedby="basic-addon1" name="id" id="txtFS"  [(ngModel)]="solicitud.statusAprobacion">
+        </div>
+
+        <div class=" input-group-lg">
+          <br>
+          
+          <span>Comentarios autorizador: </span>
+          <textarea type="text" class="form-control" placeholder="Comentarios autorizador" aria-label="Username" aria-describedby="basic-addon1" name="id" id="txtFS"  [(ngModel)]="solicitud.comentariosAutorizador"></textarea>
+        </div>
+
+        <div class=" input-group-lg">
+          <br>
+          
+          <span>Fecha salida: </span>
+          <input type="date" class="form-control" placeholder="fecha salida" aria-label="Username" aria-describedby="basic-addon1" name="id" id="txtFS"  [(ngModel)]="solicitud.fechaSalida">
+        </div>
+
+        <div class=" input-group-lg">
+          <br>
+          
+          <span>Nombre Proveedor: </span>
+          <input type="text" class="form-control" placeholder="Proveedor (persona recibe)" aria-label="Username" aria-describedby="basic-addon1" name="id" id="txtFS"  [(ngModel)]="solicitud.nombreProvedor">
+        </div>
+        
+         <div class=" input-group-lg">
+          <br>
+          
+          <span>Validar salida: </span>
+          <input type="text" class="form-control" placeholder="status validación" aria-label="Username" aria-describedby="basic-addon1"  [(ngModel)]="solicitud.validarSalida">
+        </div>
+        <div class=" input-group-lg">
+          <br>
+          
+          <span>Status Aprovación: </span>
+          <input type="text" class="form-control" placeholder="Status Aprovación" aria-label="Username" aria-describedby="basic-addon1"  id="txtFa"  [(ngModel)]="solicitud.statusAprobacion">
+        </div>
+
+        <div class=" input-group-lg">
+          <br>
+          
+          <span>Fecha compromiso: </span>
+          <input type="date" class="form-control" placeholder="Cambiar fecha compromiso" aria-label="Username" aria-describedby="basic-addon1"  id="txtFc"  [(ngModel)]="solicitud.fechaCompromiso">
+        </div>
+       
+        <div class=" input-group-lg">
+          <br>
+          
+          <span>Fecha regreso: </span>
+          <input
+          type="date"
+          id="datFechar"
+          class="f1 form-control"
+          placeholder="MM/DD/YYYY"
+          onfocus="(this.type='date')"
+          name="fechar"
+          [(ngModel)]="solicitud.fechaRegreso"
+          required
+        />
+           </div>
+
+        <div class=" input-group-lg">
+          <br>
+          
+          <span>Comentarios regreso: </span>
+          <textarea type="text" class="form-control" placeholder="Comentarios regreso" aria-label="Username" aria-describedby="basic-addon1" name="id" id="txtFS"  [(ngModel)]="solicitud.comentariosRegreso"></textarea>
+        </div>
+
+        <div class=" input-group-lg">
+          <br>
+          
+          <span>status 2: </span>
+          <input type="text" class="form-control" placeholder="status 2" aria-label="Username" aria-describedby="basic-addon1" name="id" id="txtFS"  [(ngModel)]="solicitud.status2">
+        </div>
+
+        <div class=" input-group-lg">
+          <br>
+          
+          <span>email sent: </span>
+          <input type="text" class="form-control" placeholder="email sent" aria-label="Username" aria-describedby="basic-addon1" name="id" id="txtFS"  [(ngModel)]="solicitud.emailSent">
+        </div>
+
+       </div>
+
+       
+
+      
+      
+       <div class="d-grid gap-2">
+         <br>
+         <button type="button" class="btn btn-primary" (click)="saveSomeThing();onUpdateMonitoreoC(solicitud)"> Guardar Comentarios </button>
+       </div>
+   
+       <div class="modal-footer">
+   
+   
+         
+         <!-- <button type="button" class="btn btn-primary" (click)="saveSomeThing();onUpdatePersona(persona)"> Guardar Cambios </button> -->
+   
+       </div>
+
+       
